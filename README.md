@@ -1,2 +1,2 @@
-# calculator-odin
+# calculator-top
 Calculator - The Odin Project curriculum. 
