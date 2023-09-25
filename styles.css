@@ -118,12 +118,21 @@ button {
     transition: background-color 0.3s ease;
 }
 
+.light-grey:active {
+    background-color: #f5f4f4;
+    transition: background-color 0.3s ease;
+}
 
+.orange:active {
+    background-color: #ffc977;
+    transition: background-color 0.3s ease;
+}
 
-
-
-
-
+/* this state will toggle once pressed */
+.pressed {
+    background-color: white;
+    color: #FF9E0B;
+}
 
 
 
@@ -138,5 +147,6 @@ button {
     color: white;
     justify-content: center;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
