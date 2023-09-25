@@ -66,6 +66,25 @@ body {
     place-items: center;
 }
 
+.output-screen {
+    display: flex;
+    width: 430px;
+    height: 100px;
+    grid-column: span 4;
+    border-radius: 50px;
+    color: white;
+    justify-content: flex-end;
+    align-content: flex-end;
+}
+
+.output-screen p {
+    justify-self: flex-end;
+    align-self: flex-end;
+    font-size: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 20px;
+}
+
 .grid-item {
     width: 100px;
     height: 100px;
@@ -80,6 +99,12 @@ body {
     margin: 0; 
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-item-0 {
+    width: 210px;
+    grid-column: span 2;
+    border-radius: 50px
 }
 
 /* COLORS */
@@ -99,12 +124,6 @@ body {
     color: white;
 }
 
-
-.grid-item-0 {
-    width: 210px;
-    grid-column: span 2;
-    border-radius: 50px
-}
 
 /* BUTTONS */
 
