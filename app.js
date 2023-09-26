@@ -1,3 +1,4 @@
+// Calc object to manage inputs
 const calc = {
     currentInput: '0',
     previousInput: '0',
@@ -7,7 +8,6 @@ const calc = {
 // Buttons
 const numBtns = document.querySelectorAll('.num');
 const operatorBtns = document.querySelectorAll('.operator');
-
 const equalsBtn = document.querySelector('#equalsBtn')
 const clearBtn = document.querySelector('#clearBtn')
 const pointBtn = document.querySelector('#point')
@@ -19,16 +19,16 @@ const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
-// Resets calculator functions (AC button)
+// Resets calculator functions/values (AC button)
 let clear = function () {
     calc["currentInput"] = '0';
     calc["previousInput"] = '0';
     calc["operator"] = undefined;
 }
 
+// Update calculator screen
 let updateDisplay = function () {
     resultFigure.innerText = calc["currentInput"];
-    console.log("screen cleared");
 }
 
 // Appends the number to screen and calc object
@@ -39,13 +39,14 @@ let appendNumber = function (number) {
     calc["currentInput"] = resultFigure.innerText;
 }
 
+// Computes an answer
 let compute = function () {
     let symbol = calc["operator"];
     let prev = parseFloat(calc["previousInput"])
     let curr = parseFloat(calc["currentInput"])
     if (isNaN(prev) || isNaN(curr)) return
+    
     let answer;
-
     if (symbol === "+") {
         answer = add(prev, curr);
     } else if (symbol === "-") {
@@ -55,11 +56,11 @@ let compute = function () {
     } else if (symbol === "÷") {
         answer = divide(prev, curr);
     }
-
     calc["currentInput"] = answer.toString();
     return answer;
 }
 
+// Updates calc object depending on operator
 let chooseOperator = function (operator) {
     if (calc["previousInput"] !== '0'){
         compute()
