@@ -49,6 +49,13 @@ table {
 
 /* BODY */
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     background-color: black;
 }
@@ -173,7 +180,7 @@ button {
 .footer p {
     font-size: 15px;
     color: white;
-    margin: 0 0 15px 15px;
+    margin: 0 0 35px 15px;
 }
 
 .footer p a {
