@@ -65,7 +65,7 @@ let compute = function () {
         answer = divide(prev, curr);
     }
     calc["currentInput"] = answer.toString();
-    console.log("computed answer " + answer);
+    console.log("computed answer: " + answer);
 }
 
 // Updates calc object depending on operator
@@ -89,15 +89,11 @@ let chooseOperator = function (operator) {
 }
 
 // Event Listeners
-acBtn.addEventListener('click', () => {
-    ac();
-    updateDisplay();
-});
+acBtn.addEventListener('click', ac)
+acBtn.addEventListener('click', updateDisplay)
 
-ceBtn.addEventListener('click', () => {
-    ce();
-    updateDisplay();
-});
+ceBtn.addEventListener('click', ce);
+ceBtn.addEventListener('click', updateDisplay);
 
 numBtns.forEach((button) => 
     button.addEventListener('click', () => appendNumber(button.innerText)));
@@ -105,7 +101,5 @@ numBtns.forEach((button) =>
 operatorBtns.forEach((operator) => 
     operator.addEventListener('click', () => chooseOperator(operator.id)));
 
-equalsBtn.addEventListener('click', () => {
-    compute();
-    updateDisplay();
-});
+equalsBtn.addEventListener('click', compute);
+equalsBtn.addEventListener('click', updateDisplay);
