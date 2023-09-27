@@ -9,7 +9,8 @@ const calc = {
 const numBtns = document.querySelectorAll('.num');
 const operatorBtns = document.querySelectorAll('.operator');
 const equalsBtn = document.querySelector('#equalsBtn')
-const clearBtn = document.querySelector('#clearBtn')
+const acBtn = document.querySelector('#acBtn')
+const ceBtn = document.querySelector('#ceBtn')
 const pointBtn = document.querySelector('#point')
 let resultFigure = document.querySelector("#result")
 
@@ -20,10 +21,15 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 // Resets calculator functions/values (AC button)
-let clear = function () {
+let ac = function () {
     calc["currentInput"] = '0';
     calc["previousInput"] = '0';
     calc["operator"] = undefined;
+}
+
+// Deletes previous entry (CE button)
+let ce = function () {
+    calc["currentInput"] = calc["currentInput"].slice(0, -1);
 }
 
 // Update calculator screen
@@ -41,23 +47,25 @@ let appendNumber = function (number) {
 
 // Computes an answer
 let compute = function () {
-    let symbol = calc["operator"];
+    let operator = calc["operator"];
     let prev = parseFloat(calc["previousInput"])
     let curr = parseFloat(calc["currentInput"])
+    console.log(prev);
+    console.log(curr);
     if (isNaN(prev) || isNaN(curr)) return
     
     let answer;
-    if (symbol === "+") {
+    if (operator === "add") {
         answer = add(prev, curr);
-    } else if (symbol === "-") {
+    } else if (operator === "subtract") {
         answer = subtract(prev, curr);
-    } else if (symbol === "×") {
+    } else if (operator === "multiply") {
         answer = multiply(prev, curr);
-    } else if (symbol === "÷") {
+    } else if (operator === "divide") {
         answer = divide(prev, curr);
     }
     calc["currentInput"] = answer.toString();
-    return answer;
+    console.log("computed answer " + answer);
 }
 
 // Updates calc object depending on operator
@@ -69,21 +77,25 @@ let chooseOperator = function (operator) {
     calc["currentInput"] = '0';
     resultFigure.innerText = calc["currentInput"];
     
-    if (operator === "+"){
-        calc["operator"] = "+";
-    } else if (operator === "-") {
-        calc["operator"] = "-";
-    } else if (operator === "×") {
-        calc["operator"] = "*";
-    } else if (operator === "÷") {
-        calc["operator"] = "/";
+    if (operator === "addBtn"){
+        calc["operator"] = "add";
+    } else if (operator === "subtractBtn") {
+        calc["operator"] = "subtract";
+    } else if (operator === "multiplyBtn") {
+        calc["operator"] = "multiply";
+    } else if (operator === "divideBtn") {
+        calc["operator"] = "divide";
     }
-    return
 }
 
 // Event Listeners
-clearBtn.addEventListener('click', () => {
-    clear();
+acBtn.addEventListener('click', () => {
+    ac();
+    updateDisplay();
+});
+
+ceBtn.addEventListener('click', () => {
+    ce();
     updateDisplay();
 });
 
@@ -91,7 +103,7 @@ numBtns.forEach((button) =>
     button.addEventListener('click', () => appendNumber(button.innerText)));
 
 operatorBtns.forEach((operator) => 
-    operator.addEventListener('click', () => chooseOperator(operator.innerText)));
+    operator.addEventListener('click', () => chooseOperator(operator.id)));
 
 equalsBtn.addEventListener('click', () => {
     compute();
