@@ -3,6 +3,8 @@ An iOS inspired calculator made for The Odin Project curriculum.
 
 Languages used - HTML, CSS, Javascript.
 
+Live - https://dylewskii.github.io/calculator-top/
+
 ## Final Outcome:
 ![final outcome](assets/final_result.png)
 
