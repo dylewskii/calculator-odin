@@ -8,11 +8,11 @@ const calc = {
 // Buttons
 const numBtns = document.querySelectorAll('.num');
 const operatorBtns = document.querySelectorAll('.operator');
-const equalsBtn = document.querySelector('#equalsBtn')
-const acBtn = document.querySelector('#acBtn')
-const ceBtn = document.querySelector('#ceBtn')
-const pointBtn = document.querySelector('#point')
-let resultFigure = document.querySelector("#result")
+const equalsBtn = document.querySelector('#equalsBtn');
+const acBtn = document.querySelector('#acBtn');
+const ceBtn = document.querySelector('#ceBtn');
+const pointBtn = document.querySelector('#point');
+let resultFigure = document.querySelector("#result");
 
 // Operator Functions
 const add = (a, b) => a + b;
@@ -48,10 +48,8 @@ let appendNumber = function (number) {
 // Computes an answer
 let compute = function () {
     let operator = calc["operator"];
-    let prev = parseFloat(calc["previousInput"])
-    let curr = parseFloat(calc["currentInput"])
-    console.log(prev);
-    console.log(curr);
+    let prev = parseFloat(calc["previousInput"]);
+    let curr = parseFloat(calc["currentInput"]);
     if (isNaN(prev) || isNaN(curr)) return
     
     let answer;
@@ -65,11 +63,23 @@ let compute = function () {
         answer = divide(prev, curr);
     }
     calc["currentInput"] = answer.toString();
-    console.log("computed answer: " + answer);
 }
+
+// Changes operator color when pressed (NOT LIVE)
+// let selectedOperator = function (operatorBtn) {
+//     let operatorElement = document.getElementById(operatorBtn);
+//     operatorElement.classList.add("pressed");
+// }
+
+// // Resets operator color
+// let unselectedOperator = function (operatorBtn) {
+//     let operatorElement = document.getElementById(operatorBtn);
+//     operatorElement.classList.remove("pressed");
+// }
 
 // Updates calc object depending on operator
 let chooseOperator = function (operator) {
+    // selectedOperator(operator);
     if (calc["previousInput"] !== '0'){
         compute()
     }
@@ -89,8 +99,8 @@ let chooseOperator = function (operator) {
 }
 
 // Event Listeners
-acBtn.addEventListener('click', ac)
-acBtn.addEventListener('click', updateDisplay)
+acBtn.addEventListener('click', ac);
+acBtn.addEventListener('click', updateDisplay);
 
 ceBtn.addEventListener('click', ce);
 ceBtn.addEventListener('click', updateDisplay);
